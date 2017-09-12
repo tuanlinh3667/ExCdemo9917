@@ -1,49 +1,95 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-//Creat by Tuan Linh 00569, date: 2/9/2017.
-int main(){
-	int a;
-	char ten[20];
-	while (true){
-		printf("   MENU CONSOLE \n");
-    	printf("--------------------------- \n");
-    	printf("1.Them sinh vien. \n");
-    	printf("2.Hien thi danh sach sinh vien. \n");
-    	printf("3.Sua sinh vien. \n");
-    	printf("4.Xoa sinh vien. \n");
-    	printf("5.Thoat. \n");
-		printf("Nhap lua chon cua ban: ");
-    	scanf("%d", &a);
-    	switch(a){
-		case 1:	
-			printf("Nhap ten sinh vien: ");
-    		gets(ten);
-    		if(sizeof(ten) < 3){
-				printf("Ten qua ngan...Vui long nhap ten trong khoang tu 4 - 15 ky tu.");
-			}else{
-				printf("Ten sinh vien la: ", &ten);
-				}
-   			break;
-		case 2:
-   			printf("Thank you so much. \n");
-   			printf("******************** \n");
-   			break;
-		case 3:
-   			printf("Thank you so much. \n");
-   			printf("******************** \n");
-   			break;
-   		case 4:
-   			printf("Thank you so much. \n");
-   			printf("******************** \n");
-   			break;				
-	
-	}if(a == 5){
-		printf("Goodbye, see you soon.");
-		break;
-		}
+#include<stdbool.h>
+#include<stdio.h>
+#include <ctype.h>
+#include <memory.h>
+
+void main() {
+    createMenu();
 }
-	
 
+createMenu() {
+    while (true) {
+        int choice;
+        printf("-----------------Menu-----------------\n");
+        printf("1. Show student list.\n");
+        printf("2. Add new student.\n");
+        printf("3. Edit student.\n");
+        printf("4. Delete student.\n");
+        printf("5. Exit.\n");
+        printf("--------------------------------------\n");
+        printf("Please enter your choice: ");
+        scanf("%d", &choice);
+        getchar();
+        if (choice == 5) {
+            printf("End program.");
+            break;
+        }
+        switch (choice) {
+            case 1:
+                // do something.
+                printf("Show student list.\n");
+                showStudent();
+                break;
+            case 2:
+                // do something.
+                addStudent();
+                break;
+            case 3:
+                // do something.
+                printf("Edit student.\n");
+                editStudent();
+                break;
+            case 4:
+                // do something.
+                printf("Delete student.\n");
+                deleteStudent();
+                break;
+            default:
+                //
+                printf("Please enter a number from 1 to 5.\n");
+                break;
+        }
+    }
+}
 
-	
+showStudent() {
+
+}
+
+addStudent() {
+    char name[100];
+    char birthday[100];
+    char phone[100];
+    bool ten = false; // Ki?m tra tính h?p l? c?a tên.
+    printf("Add new student.\n");
+    while (!ten){ // N?u tên không h?p l? th? ti?p t?c b?t nh?p.
+        printf("Please enter name: \n");
+        fgets(name, sizeof(name), stdin);
+        int lengthOfName = strlen(name) - 1;
+        if (lengthOfName < 3) {
+            printf("Name is too short. Please enter number between 3 to 15 character.\n");
+        } else if (lengthOfName > 15) {
+            printf("Name is too long. Please enter number between 3 to 15 character.\n");
+        } else {
+            ten = true;
+        }
+    }
+    printf("Please enter birthday: \n");
+    fgets(birthday, sizeof(birthday), stdin);
+
+    printf("Please enter phone: \n");
+    fgets(phone, sizeof(phone), stdin);
+    printf("\tThe student information \n");
+	printf("---------------------------- \n");
+    printf("Name: %s \n", name);
+    printf("Birthday: %s \n", birthday);
+    printf("Phone: %s \n", phone);
+}
+
+editStudent() {
+
+}
+
+deleteStudent() {
+
+}
